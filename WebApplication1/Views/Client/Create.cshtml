@@ -1,0 +1,54 @@
+﻿
+@model Client
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Добавление пользователя</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name">Имя</label>
+            <input class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="LastName">Фамилия</label>
+            <input class="form-control" asp-for="LastName" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SecondName">Отчество</label>
+            <input class="form-control" asp-for="SecondName" />
+            <span asp-validation-for="SecondName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">            
+            <label asp-for="DateOfBirth">Др</label>           
+            <input class="form-control" type="date"  min="1900-01-01" max="@DateTime.Now.ToString("yyyy-MM-dd")" asp-for="DateOfBirth" />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="IIN">ИИН</label>
+            <input class="form-control" maxlength="12" asp-for="IIN" />
+            <span asp-validation-for="IIN" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address">Адрес</label>
+            <input class="form-control" asp-for="Address" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="mb-3">            
+            <select name="select1" asp-for="Country" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                 <option value="1">Казахстан</option>
+                 <option value="2">США</option>
+                 <option value="3">Индия</option>
+                <option value="4">Россия</option>
+            </select>       
+            <input class="form-control" asp-for="Country" />
+            <span asp-validation-for="CountryInfoKey" class="text-danger"></span>
+        </div>
+        <button class="btn btn-primary" type="submit">Добавить</button>
+        <a asp-controller="Client" asp-action="Index" class="btn btn-secondary" role="button">Отмена</a>
+    </div>
+    
+</form>
