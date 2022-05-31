@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CountryCount>
+@{
+    ViewData["Title"] = "Доступные страны";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Страна</th>
+            <th>Количество клиентов</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var country in Model)
+        {
+            <tr>
+                <td>@country.Country</td>
+                <td>@country.Count</td>
+            </tr>
+        }
+    </tbody>    
+</table>
+

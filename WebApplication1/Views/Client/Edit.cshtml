@@ -10,6 +10,7 @@
         <div class="mb-3">
             <label asp-for="Name">Имя</label>
             <input class="form-control" asp-for="Name" />
+            
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -47,8 +48,17 @@
             <option value="India">India</option>
             <option value="USA">USA</option>            
             </select>
+
+              
             
-            <div id="step2" style="float:left">            
+            <div id="step2" style="float:left">  
+                <select id="USA" asp-for="City">
+            <option selected disabled>Выбирите город</option>
+            <option value="Boston">Boston</option>
+            <option value="New York">New York</option>
+            <option value="Los Angeles">Los Angeles</option>
+            </select>   
+            
             <select id="Kazakstan" asp-for="City">
             <option selected disabled>Выбирите город</option>
             <option value="Astana">Astana</option>
@@ -62,17 +72,14 @@
             <option value="Delhi">Delhi</option>
             <option value="Bangalore">Bangalore</option>
             </select>
-
-            <select id="USA" asp-for="City">
-            <option selected disabled>Выбирите город</option>
-            <option value="Boston">Boston</option>
-            <option value="New York">New York</option>
-            <option value="Los Angeles">Los Angeles</option>
-            </select>                  
+            
             </div>
             
+
+          
+            
         </div>
-        <button class="btn btn-primary" type="submit">Добавить</button>
+        <button class="btn btn-primary" type="submit">Обновить</button>
         <a asp-controller="Client" asp-action="Index" class="btn btn-secondary" role="button">Отмена</a>
     </div>
     

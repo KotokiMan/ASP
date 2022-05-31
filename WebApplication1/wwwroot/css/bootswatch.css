@@ -13,6 +13,10 @@
  */
 @import url("https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&display=swap");
 
+#step2 select {
+    display: none;
+}
+
 :root {
     --bs-blue: #eb6864;
     --bs-indigo: #6610f2;
