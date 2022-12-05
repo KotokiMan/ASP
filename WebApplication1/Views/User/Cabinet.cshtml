@@ -1,0 +1,61 @@
+﻿@model IEnumerable<UserList>
+@{
+    ViewData["Title"] = "Личный кабинет";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Личные данные</h2>
+            @*<a class="btn btn-primary" asp-controller="User" asp-action="PdfGeneration" role="button">Отчет</a>*@
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="User" asp-action="Create" class="btn btn-primary">Открыть счёт</a>
+        </div>
+    </div>
+    <br /> <br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>LastName</th>
+                <th>SecondName</th>
+                <th>IIN</th>
+                <th>Address</th>
+                <th>DateOfBirth</th>
+                <th>Country</th>
+                <th>City</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.LastName</td>
+                    <td>@item.SecondName</td>
+                    <td>@item.IIN</td>
+                    <td>@item.Address</td>
+                    <td>@item.DateOfBirth.ToString("D")</td>
+                    <td>@item.Country</td>
+                    <td>@item.City</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-area="" asp-controller="User" asp-action="Balance" asp-route-id="@item.Id"
+                           class="btn btn-primary mx-2">  <i class="bi bi-pencil-square"></i>Операции</a>
+                            <a asp-area="" asp-controller="User" asp-action="Edit" asp-route-id="@item.Id"
+                           class="btn btn-primary mx-2">  <i class="bi bi-pencil-square"></i>Изменить данные</a>
+                            <a asp-area="" asp-controller="User" asp-action="Remove" asp-route-id="@item.Id"
+                           class="btn btn-danger mx-2"> <i class="bi bi-person-x"></i>Удалить счет</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+   
+
+
+

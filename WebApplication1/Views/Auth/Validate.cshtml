@@ -1,0 +1,27 @@
+﻿@model DtoReg
+
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Register</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email">E-mail</label>
+
+            <span asp-validation-for="Email" class="text"> @Model.Email</span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Code">Code</label>
+            <input class="form-control" asp-for="Code" />
+            <span asp-validation-for="Code" class="text-danger"></span>
+        </div>
+        
+        <a class="btn-link" asp-action="CodeSend" role="button" asp-route-Email="@Model.Email">Отправить код повторно</a>
+        
+        <button class="btn btn-primary" type="submit">Подтвердить</button>
+        <a asp-controller="Auth" asp-action="Login" class="btn btn-secondary" role="button">Back</a>
+    </div>
+
+</form>

@@ -1,0 +1,38 @@
+﻿@model UserList
+
+
+<form method="post" asp-action="RemovePOST">
+    <input asp-for="Id" type="hidden" /> 
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Удалить пользователя</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name">Имя</label>
+            <input class="form-control" disabled asp-for="Name" /> 
+        </div>
+        <div class="mb-3">
+            <label asp-for="LastName">Фамилия</label>
+            <input class="form-control" disabled asp-for="LastName" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="SecondName">Отчество</label>
+            <input class="form-control" disabled asp-for="SecondName" />          
+        </div>        
+        <div class="mb-3">
+            <label asp-for="IIN">ИИН</label>
+            <input class="form-control" maxlength="12" asp-for="IIN" />
+            <span asp-validation-for="IIN" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address">Адрес</label>
+            <input class="form-control" asp-for="Address" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>     
+
+        <button class="btn btn-primary" type="submit">Удалить</button>
+        <a asp-controller="User" asp-action="Cabinet" class="btn btn-secondary" role="button">Отмена</a>
+    </div>
+    
+</form>

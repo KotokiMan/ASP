@@ -17,3 +17,6 @@ html {
 body {
   margin-bottom: 60px;
 }
+.empty-field {
+    border: 2px red;
+}

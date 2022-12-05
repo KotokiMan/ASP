@@ -1,0 +1,86 @@
+﻿@model UserList
+
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Добавление пользователя</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name">Имя</label>
+            <input class="form-control" asp-for="Name" />
+            
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="LastName">Фамилия</label>
+            <input class="form-control" asp-for="LastName" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SecondName">Отчество</label>
+            <input class="form-control" asp-for="SecondName" />
+            <span asp-validation-for="SecondName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">            
+            <label asp-for="DateOfBirth">Др</label>           
+            <input class="form-control" type="date"  min="1900-01-01" max="@DateTime.Now.ToString("yyyy-MM-dd")" asp-for="DateOfBirth" />
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="IIN">ИИН</label>
+            <input class="form-control" maxlength="12" asp-for="IIN" />
+            <span asp-validation-for="IIN" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address">Адрес</label>
+            <input class="form-control" asp-for="Address" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="mb-3">            
+            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                  
+            <select id="select1" asp-for="Country">            
+            <option selected disabled>Страна</option>
+            <option value="Kazakstan">Kazakstan</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>            
+            </select>
+
+              
+            
+            <div id="step2" style="float:left">  
+                <select id="USA" asp-for="City">
+            <option selected disabled>Выбирите город</option>
+            <option value="Boston">Boston</option>
+            <option value="New York">New York</option>
+            <option value="Los Angeles">Los Angeles</option>
+            </select>   
+            
+            <select id="Kazakstan" asp-for="City">
+            <option selected disabled>Выбирите город</option>
+            <option value="Astana">Astana</option>
+            <option value="Almaty">Almaty</option>
+            <option value="Kostanay">Kostanay</option>
+            </select>
+            
+            <select id="India" asp-for="City">
+            <option selected disabled>Выбирите город</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bangalore">Bangalore</option>
+            </select>
+            
+            </div>
+            
+
+          
+            
+        </div>
+        <button class="btn btn-primary" type="submit">Обновить</button>
+        <a asp-controller="User" asp-action="Cabinet" class="btn btn-secondary" role="button">Отмена</a>
+    </div>
+    
+</form>

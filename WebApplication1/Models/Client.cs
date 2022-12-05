@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
+    [Table("Client")]
     public class Client
     {
         public int ID { get; set; }
@@ -31,5 +32,6 @@ namespace WebApplication1.Models
         [ForeignKey("CountryInfoKey")]
         public virtual UCountry? Country { get; set; }
         public virtual Account? Account { get; set; }
+        public int UserAuthBankId { get; set; }
     }
 }

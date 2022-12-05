@@ -1,0 +1,39 @@
+﻿@{
+}
+@model DtoReg
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Register</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email">E-mail</label>
+            <input class="form-control" asp-for="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password">Password</label>
+            <input class="form-control" asp-for="Password" type="password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password2">Repit Password</label>
+            <input class="form-control" asp-for="Password2" type="password" />
+            <span asp-validation-for="Password2" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <select asp-for="Role">
+                <option value="0">User</option>
+                <option value="1">Admin</option>
+            </select>
+        </div>
+       
+
+        <button class="btn btn-primary" type="submit">Register</button>
+        <a asp-controller="Client" asp-action="Index" class="btn btn-secondary" role="button">Back</a>
+    </div>
+
+</form>
+

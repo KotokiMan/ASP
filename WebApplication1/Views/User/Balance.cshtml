@@ -1,0 +1,43 @@
+﻿@model IEnumerable<UserList>
+@{
+    ViewData["Title"] = "Банковский аккаунт";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+           <h2 class="text-primary">Банковский аккаунт</h2>
+        </div>
+    </div>        
+</div>
+<br /> <br />
+ 
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>LastName</th>
+            <th>IIN</th>
+            <th>AccountNumber</th>
+            <th>Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.LastName</td>
+                <td>@item.IIN</td>
+                <td>@item.AccountNumber</td>
+                <td>@item.Balance</td>                
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="User" asp-action="Remittance" class="btn btn-secondary" role="button" asp-route-id="@Model.FirstOrDefault().Id">Перевод</a>
+<a asp-controller="User" asp-action="Refill" class="btn btn-secondary" role="button" asp-route-id="@Model.FirstOrDefault().Id">Пополнение</a>
+<a asp-controller="User" asp-action="Withdrawal" class="btn btn-secondary" role="button" asp-route-id="@Model.FirstOrDefault().Id">Снятие</a>
+
+
+<a asp-controller="User" asp-action="Cabinet" class="btn btn-secondary" role="button">Назад</a>

@@ -27,5 +27,7 @@ namespace WebApplication1.Core
         public DbSet<UCountry> Countries { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<UserAuthBank> UserAuthBanks { get; set; }
+        public DbSet<BankOperationHistiry> BankOperation { get; set; }
     }
 }

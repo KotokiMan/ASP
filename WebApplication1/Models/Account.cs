@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
+    [Table("Accounts")]
     public class Account
     {
         public int Id { get; set; }

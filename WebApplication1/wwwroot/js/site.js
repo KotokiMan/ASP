@@ -15,4 +15,15 @@ $('#select1').change(function () {
 });
 
 
+$('#num1').change(function () {
+    let result;
+    let num1 = Number(document.getElementById("num1").value);
+    let num2 = Number(document.getElementById("num2").value);
+    if (num1 <= num2)
+        $('num1').removeClass('empty_field');
+    else
+        $('num1').addClass('empty_field');
+
+});
+
 // Write your JavaScript code.
