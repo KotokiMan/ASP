@@ -9,5 +9,6 @@ namespace WebApplication1.Models
         public string Password2 { get; set; }
         public string Code { get; set; }
         public EAccessLevel Role { get; set; }
+        public bool AutoPass { get; set; } = false;
     }
 }

@@ -299,11 +299,17 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Cabinet");
         }
 
-        public void PdfGeneration()
+        public FileStreamResult PdfGeneration()
         {
             var accountId = _context.UserAuthBanks.Where(r => r.Email == CookEmail).First().Id;
-            new PdfHelper(_context).CreatePdf(accountId);
-            var bankAccount = _context.Clients.Where(r => r.UserAuthBankId == accountId).ToList();
+            return new PdfHelper(_context).CreateTablePdf(accountId);
+            //var bankAccount = _context.Clients.Where(r => r.UserAuthBankId == accountId).ToList();
+        }
+        
+        public FileStreamResult PdfGenerationn(string path)
+        {
+            return new PdfHelper(_context).CreateTablePdff(path);
+            //var bankAccount = _context.Clients.Where(r => r.UserAuthBankId == accountId).ToList();
         }
     }
 }

@@ -23,7 +23,10 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.5" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.4" />
-    <PackageReference Include="Syncfusion.Pdf.AspNet.Mvc5" Version="20.3.0.59" />
+    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="20.3.0.60" />
+    <PackageReference Include="Syncfusion.EJ2.MVC5" Version="20.3.0.60" />
+    <PackageReference Include="Syncfusion.Pdf.Imaging.Net.Core" Version="20.3.0.60" />
+    <PackageReference Include="ZXing.Net" Version="0.16.8" />
   </ItemGroup>
 
   <ItemGroup>

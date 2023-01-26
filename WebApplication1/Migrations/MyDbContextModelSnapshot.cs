@@ -44,7 +44,32 @@ namespace WebApplication1.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Accounts");
+                    b.ToTable("Accounts", (string)null);
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.BankOperationHistiry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NumberAccountRecepient")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NumberAccountSending")
+                        .HasColumnType("text");
+
+                    b.Property<double>("TransferSum")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("operationType")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BankOperationHistory", (string)null);
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Client", b =>
@@ -82,11 +107,14 @@ namespace WebApplication1.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("UserAuthBankId")
+                        .HasColumnType("integer");
+
                     b.HasKey("ID");
 
                     b.HasIndex("CountryInfoKey");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Client", (string)null);
                 });
 
             modelBuilder.Entity("WebApplication1.Models.UCountry", b =>
@@ -105,7 +133,38 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Countries");
+                    b.ToTable("UCountry", (string)null);
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.UserAuthBank", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccessLevel")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsEmailValidate")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ValidateCode")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserAuthBank", (string)null);
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Account", b =>

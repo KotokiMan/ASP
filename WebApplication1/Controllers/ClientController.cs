@@ -8,6 +8,8 @@ namespace WebApplication1.Controllers
     {
         private readonly MyDbContext _context;
         public ClientController(MyDbContext context) { _context = context; }
+        private string CookRole => Request.Cookies["role"];
+        private string CookEmail => Request.Cookies["login"];
         public IActionResult Index()
         {
             var userList = from u in _context.Clients.ToList()
@@ -63,7 +65,8 @@ namespace WebApplication1.Controllers
                     Address = obj.Address,
                     IIN = obj.IIN,
                     DateOfBirth = obj.DateOfBirth,
-                    CountryInfoKey = countryInfoKey
+                    CountryInfoKey = countryInfoKey,
+                    UserAuthBankId = _context.UserAuthBanks.Where(r => r.Email == CookEmail).First().Id
                 };
                 client.DateOfBirth = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(client.DateOfBirth, "New Zealand Standard Time", "UTC");
                 _context.Clients.Add(client);

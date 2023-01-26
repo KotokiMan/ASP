@@ -45,17 +45,25 @@ namespace WebApplication1.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View();
+            DtoReg dto = new DtoReg();
+            return View(dto);
         }
+
 
         [HttpPost]
         public IActionResult Register(DtoReg dto)
         {
-            if (_context.UserAuthBanks.Any(r => r.Email == dto.Email)) return RedirectToAction("Error", "Error", new ErrorModel { ErrorMessage = "Email зарегистрирован в системе" });            
+            if (_context.UserAuthBanks.Any(r => r.Email == dto.Email)) return RedirectToAction("Error", "Error", new ErrorModel { ErrorMessage = "Email зарегистрирован в системе" });
             if (!new RegHelper().IsEmail(dto.Email)) return RedirectToAction("Error", "Error", new ErrorModel { ErrorMessage = "Email указан не правильно" });
+            if (dto.AutoPass)
+            {
+                dto.Password = new RegHelper().CreateRandomPassword();
+                dto.Password2 = dto.Password;
+            }
+                  
             if (!dto.Password.Equals(dto.Password2)) return RedirectToAction("Error", "Error", new ErrorModel { ErrorMessage = "Пароли не совпадают" });
+            if (!new RegHelper().IsPass(dto.Password)) return RedirectToAction("Error", "Error", new ErrorModel { ErrorMessage = "Пароль должен содержать более 8 символов верхнего нижнего регистра, цифр и спецсимвола" });
             var role = EAccessLevel.User;
-            if (dto.Role == Enum.EAccessLevel.Admin) role = EAccessLevel.Admin; 
             var user = new UserAuthBank
             {
                 Email = dto.Email,
@@ -66,8 +74,8 @@ namespace WebApplication1.Controllers
             };
             _context.UserAuthBanks.Add(user);
             _context.SaveChanges();
-            new RegHelper().EmailValidate(user.Email, user.ValidateCode);
-            return RedirectToAction("Validate","Auth", user);
+            new RegHelper().EmailValidate(user.Email, user.ValidateCode, dto.Password);
+            return RedirectToAction("Validate", "Auth", user);
         }
 
         public ActionResult Validate(UserAuthBank inf)
